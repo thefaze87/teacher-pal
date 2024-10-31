@@ -10,6 +10,16 @@ const CATEGORIES = [
   'Interactive Discussions',
   'Hands-on Experiments',
   'Digital Learning',
+  'Inquiry-Based Learning',
+  'Differentiated Instruction',
+  'STEM Activities',
+  'Peer Teaching',
+  'Role-Playing',
+  'Station Rotation',
+  'Flipped Learning',
+  'Problem-Based Learning',
+  'Visual Learning',
+  'Kinesthetic Activities'
 ] as const;
 
 const SUBJECTS = [
@@ -19,13 +29,39 @@ const SUBJECTS = [
   'Social Studies',
   'Art',
   'Music',
+  'Physical Education',
+  'Computer Science',
+  'Foreign Languages',
+  'Environmental Studies',
+  'Health Education',
+  'Economics',
+  'Geography',
+  'History',
+  'Chemistry',
+  'Physics',
+  'Biology',
+  'Engineering',
+  'Drama/Theater',
+  'Special Education'
 ] as const;
 
 const GRADE_LEVELS = [
-  'K-2',
-  '3-5',
-  '6-8',
-  '9-12',
+  'Pre-K',
+  'K',
+  '1st Grade',
+  '2nd Grade',
+  '3rd Grade',
+  '4th Grade',
+  '5th Grade',
+  '6th Grade',
+  '7th Grade',
+  '8th Grade',
+  '9th Grade',
+  '10th Grade',
+  '11th Grade',
+  '12th Grade',
+  'Higher Education',
+  'Special Education'
 ] as const;
 
 export function IdeaGenerator() {

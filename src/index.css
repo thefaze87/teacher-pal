@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --ion-color-primary: #007AFF;
+  --ion-color-primary-rgb: 0,122,255;
+  --ion-background-color: #F2F2F7;
+  --ion-toolbar-background: rgba(255,255,255,0.8);
+  --ion-toolbar-border-color: rgba(0,0,0,0.1);
+}
+
+ion-content {
+  --padding-top: env(safe-area-inset-top);
+  --padding-bottom: env(safe-area-inset-bottom);
+}
+
+ion-card {
+  border-radius: 10px;
+  margin: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+ion-select {
+  --placeholder-opacity: 0.6;
+}
+
+ion-button {
+  --border-radius: 10px;
+  margin: 16px;
+  height: 44px;
+  font-weight: 600;
+}
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 

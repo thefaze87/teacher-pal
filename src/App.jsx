@@ -1,5 +1,4 @@
-import { IdeaGenerator } from './components/IdeaGenerator'
-import { Chat } from './components/Chat'
+import { IdeaGenerator } from './components/IdeaGenerator';
 
 function App() {
   return (
@@ -15,13 +14,12 @@ function App() {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="max-w-2xl mx-auto">
           <IdeaGenerator />
-          <Chat />
         </div>
       </main>
     </div>
-  )
+  );
 }
 
-export default App 
+export default App;
