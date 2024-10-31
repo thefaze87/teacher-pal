@@ -4,6 +4,7 @@ import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
          IonAvatar, IonSpinner, IonList, IonCard, IonCardContent,
          IonRefresher, IonRefresherContent } from '@ionic/react';
 import { sendOutline, chevronDownCircleOutline } from 'ionicons/icons';
+import { AppHeader } from './AppHeader';
 
 export function Chat() {
   const [messages, setMessages] = useState([
@@ -68,52 +69,52 @@ export function Chat() {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Teaching Assistant</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-
+      <AppHeader />
       <IonContent ref={contentRef} className="ion-padding chat-content">
-        <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
-          <IonRefresherContent
-            pullingIcon={chevronDownCircleOutline}
-            pullingText="Pull to refresh"
-            refreshingSpinner="circles"
-            refreshingText="Refreshing...">
-          </IonRefresherContent>
-        </IonRefresher>
+        <div className="content-container">
+          <h1 className="page-title">AI Assistant</h1>
+          <div className="chat-container">
+          <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+            <IonRefresherContent
+                pullingIcon={chevronDownCircleOutline}
+                pullingText="Pull to refresh"
+                refreshingSpinner="circles"
+                refreshingText="Refreshing...">
+            </IonRefresherContent>
+            </IonRefresher>
 
-        <IonList>
-          {messages.map((message) => (
-            <div
-              key={message.id}
-              className={`message-container ${message.role === 'user' ? 'user-message' : 'assistant-message'}`}
-            >
-              {message.role === 'assistant' && (
+            <IonList>
+            {messages.map((message) => (
+                <div
+                key={message.id}
+                className={`message-container ${message.role === 'user' ? 'user-message' : 'assistant-message'}`}
+                >
+                {message.role === 'assistant' && (
+                    <IonAvatar className="message-avatar">
+                    <img src="/assistant-avatar.png" alt="AI" />
+                    </IonAvatar>
+                )}
+                <IonCard className={`message-card ${message.role}-card`}>
+                    <IonCardContent>{message.content}</IonCardContent>
+                </IonCard>
+                </div>
+            ))}
+
+            {isTyping && (
+                <div className="message-container assistant-message">
                 <IonAvatar className="message-avatar">
-                  <img src="/assistant-avatar.png" alt="AI" />
+                    <img src="/assistant-avatar.png" alt="AI" />
                 </IonAvatar>
-              )}
-              <IonCard className={`message-card ${message.role}-card`}>
-                <IonCardContent>{message.content}</IonCardContent>
-              </IonCard>
-            </div>
-          ))}
-
-          {isTyping && (
-            <div className="message-container assistant-message">
-              <IonAvatar className="message-avatar">
-                <img src="/assistant-avatar.png" alt="AI" />
-              </IonAvatar>
-              <IonCard className="message-card assistant-card">
-                <IonCardContent>
-                  <IonSpinner name="dots" />
-                </IonCardContent>
-              </IonCard>
-            </div>
-          )}
-        </IonList>
+                <IonCard className="message-card assistant-card">
+                    <IonCardContent>
+                    <IonSpinner name="dots" />
+                    </IonCardContent>
+                </IonCard>
+                </div>
+            )}
+            </IonList>
+          </div>
+        </div>
       </IonContent>
 
       <IonFooter>

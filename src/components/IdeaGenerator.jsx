@@ -5,6 +5,7 @@ import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
          IonButton, IonIcon, IonChip, IonSpinner,
          IonActionSheet } from '@ionic/react';
 import { saveOutline, shareOutline, refreshOutline, bulbOutline } from 'ionicons/icons';
+import { AppHeader } from './AppHeader';
 
 const SUBJECTS = [
   'Mathematics', 'Science', 'Language Arts', 'Social Studies',
@@ -77,43 +78,22 @@ export function IdeaGenerator() {
 
   return (
     <IonPage>
-      <IonHeader className="ion-no-border">
-        <IonToolbar>
-          <div className="app-header">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-                <span className="text-white font-bold text-lg">T</span>
-              </div>
-              <div>
-                <h1 className="app-title">TeachSpark</h1>
-                <p className="app-subtitle">AI-Powered Lesson Ideas</p>
-              </div>
-            </div>
-          </div>
-        </IonToolbar>
-      </IonHeader>
-
+      <AppHeader />
       <IonContent>
         <div className="content-container">
-          <IonCard className="welcome-card">
+          <h1 className="page-title">Lesson Ideas</h1>
+          <IonCard className="generator-card">
             <IonCardContent>
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-                  <IonIcon 
-                    icon={bulbOutline} 
-                    className="text-white text-2xl"
-                  />
+              <div className="generator-header">
+                <div className="generator-icon">
+                  <IonIcon icon={bulbOutline} />
                 </div>
-                <div>
-                  <h2 className="text-xl font-semibold text-gray-900">
-                    Lesson Idea Generator
-                  </h2>
-                  <p className="text-gray-600">
-                    Create engaging activities in seconds
-                  </p>
+                <div className="generator-title">
+                  <h2>Lesson Idea Generator</h2>
+                  <p>Create engaging activities in seconds</p>
                 </div>
               </div>
-              
+
               <IonItem lines="none" className="custom-select-item">
                 <IonLabel position="stacked">Subject Area</IonLabel>
                 <IonSelect 

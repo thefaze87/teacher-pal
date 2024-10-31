@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-         IonCard, IonCardHeader, IonCardTitle, IonCardContent,
-         IonChip } from '@ionic/react';
+import { IonPage, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonChip } from '@ionic/react';
+import { AppHeader } from './AppHeader';
 
 export function SavedLessons() {
   const [lessons] = useState([
@@ -16,24 +15,24 @@ export function SavedLessons() {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>My Library</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-
+      <AppHeader />
       <IonContent className="ion-padding">
-        {lessons.map(lesson => (
-          <IonCard key={lesson.id}>
-            <IonCardHeader>
-              <IonCardTitle>{lesson.title}</IonCardTitle>
-            </IonCardHeader>
-            <IonCardContent>
-              <IonChip>{lesson.subject}</IonChip>
-              <IonChip>{lesson.gradeLevel}</IonChip>
-            </IonCardContent>
-          </IonCard>
-        ))}
+        <div className="content-container">
+          <h1 className="page-title">My Library</h1>
+          <div className="lessons-grid">
+          {lessons.map(lesson => (
+            <IonCard key={lesson.id}>
+                <IonCardHeader>
+                <IonCardTitle>{lesson.title}</IonCardTitle>
+                </IonCardHeader>
+                <IonCardContent>
+                <IonChip>{lesson.subject}</IonChip>
+                <IonChip>{lesson.gradeLevel}</IonChip>
+                </IonCardContent>
+            </IonCard>
+            ))}
+          </div>
+        </div>
       </IonContent>
     </IonPage>
   );
