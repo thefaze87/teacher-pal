@@ -1,0 +1,100 @@
+@use 'variables' as *;
+@forward "tailwindcss/base";
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  color: #000000;
+  background-color: #f2f2f7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --ion-color-primary: #00A848;
+  --ion-color-primary-rgb: 0,168,72;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #00943f;
+  --ion-color-primary-tint: #1ab15a;
+}
+
+body {
+  margin: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+ion-content {
+  --background: #f2f2f7;
+  --padding-top: calc(env(safe-area-inset-top) + 20px);
+  --padding-bottom: calc(env(safe-area-inset-bottom) + 40px);
+  --padding-start: 16px;
+  --padding-end: 16px;
+}
+
+// Add this for better padding on iOS devices
+ion-app {
+  background-color: #f2f2f7;
+}
+
+.content-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 12px;
+  padding-top: calc(env(safe-area-inset-top) + 12px);
+  padding-bottom: calc(env(safe-area-inset-bottom) + 32px);
+}
+
+ion-input {
+  --background: #ffffff;
+  --color: #000000;
+  --placeholder-color: #8e8e93;
+  --border-radius: 10px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  
+  &.ion-focused {
+    --border-color: #007aff;
+  }
+}
+
+ion-button {
+  --border-radius: 10px;
+  --box-shadow: none;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 1em;
+  --padding-end: 1em;
+  height: 44px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.custom-input {
+  --background: #ffffff !important;
+  --color: #000000 !important;
+  --placeholder-color: #8e8e93 !important;
+  --border-radius: 10px !important;
+  --padding-start: 16px !important;
+  --padding-end: 16px !important;
+  --padding-top: 12px !important;
+  --padding-bottom: 12px !important;
+
+  .native-input {
+    background-color: #ffffff !important;
+  }
+
+  &.ion-focused {
+    --border-color: #00A848 !important;
+    --highlight-color: #00A848 !important;
+  }
+}
+
+.spark-app {
+    .has-focus {
+      --border-color: #00A848 !important;
+      --highlight-color: #00A848 !important;
+    }
+}
