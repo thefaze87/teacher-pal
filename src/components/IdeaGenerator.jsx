@@ -184,7 +184,7 @@ export function IdeaGenerator() {
                   ))}
                 </ol>
 
-                <div className="flex justify-end gap-2 mt-4">
+                <div className="flex justify-end gap-2 mt-4 action-icons">
                   <IonButton fill="clear" onClick={() => setShowActions(true)}>
                     <IonIcon slot="icon-only" icon={shareOutline} />
                   </IonButton>

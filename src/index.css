@@ -1,17 +1,53 @@
 :root {
-  /* Updated color palette for better contrast */
-  --app-primary: #2D5BFF;
-  --app-secondary: #6979F8;
-  --app-background: #F8FAFC;
+  /* Modern Purple Gradient Palette */
+  --app-primary: #6366F1;
+  --app-secondary: #8B5CF6;
+  --app-accent: #A855F7;
+  --app-gradient: linear-gradient(135deg, #6366F1, #A855F7);
+  
+  /* Supporting colors */
   --app-surface: #FFFFFF;
+  --app-background: #F8FAFC;
   --app-text-primary: #1E293B;
   --app-text-secondary: #64748B;
   --app-border: #E2E8F0;
-  
+  --app-success: #10B981;
+  --app-warning: #F59E0B;
+  --app-error: #EF4444;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
   /* Navigation colors */
   --tab-background: rgba(255, 255, 255, 0.9);
   --tab-active: var(--app-primary);
   --tab-inactive: var(--app-text-secondary);
+
+  /* Font sizes */
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-base: 16px;
+  --font-lg: 18px;
+  --font-xl: 20px;
+  --font-2xl: 24px;
+  --font-3xl: 28px;
+  
+  /* Line heights */
+  --leading-tight: 1.2;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  
+  /* Spacing system */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
 }
 
 /* Global background */
@@ -32,50 +68,49 @@ ion-header {
   }
 }
 
-/* Enhanced tab bar styles */
+/* Modern Tab Bar */
 .tab-bar {
-  --background: var(--tab-background);
   backdrop-filter: blur(12px);
-  border-top: 1px solid var(--app-border);
-  box-shadow: 0 -1px 3px 0 rgb(0 0 0 / 0.1);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid rgba(229, 231, 235, 0.5);
   padding-bottom: env(safe-area-inset-bottom);
 }
 
 .tab-button {
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .tab-button-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8px 0;
+  padding: 6px 0;
+  opacity: 0.7;
+  transition: all 0.2s ease;
 }
 
-/* Active tab indicator */
-.tab-button.tab-selected {
-  ion-icon {
-    color: var(--tab-active);
-    transform: scale(1.1);
-  }
-  
-  ion-label {
-    color: var(--tab-active);
-    font-weight: 600;
-  }
+.tab-button.tab-selected .tab-button-inner {
+  opacity: 1;
+  transform: translateY(-2px);
+}
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 25%;
-    width: 50%;
-    height: 3px;
-    background: var(--tab-active);
-    border-radius: 3px 3px 0 0;
-    animation: slideIn 0.3s ease-out;
-  }
+.tab-button.tab-selected::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  background: var(--app-gradient);
+  border-radius: 3px 3px 0 0;
+  animation: scaleIn 0.2s ease-out;
+}
+
+ion-tab-button {
+  --color: var(--app-text-secondary);
+  --color-selected: var(--app-primary);
 }
 
 /* Card improvements */
@@ -90,8 +125,22 @@ ion-card {
 
 /* Header title styles */
 .app-header {
-  padding: 16px 16px 8px 16px;
-  background: var(--app-surface);
+  padding: var(--space-5) var(--space-4);
+}
+
+.app-title {
+  font-size: var(--font-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-tight);
+  margin: 0;
+}
+
+.app-subtitle {
+  font-size: var(--font-sm);
+  color: var(--app-text-secondary);
+  margin: var(--space-1) 0 0 0;
+  line-height: var(--leading-snug);
 }
 
 .page-title-toolbar {
@@ -100,11 +149,12 @@ ion-card {
 }
 
 .page-title {
-  font-size: 24px;
+  font-size: var(--font-3xl);
   font-weight: 700;
   color: var(--app-text-primary);
-  margin: 0;
-  padding: 0 16px 16px 16px;
+  margin: 0 var(--space-4) var(--space-6) var(--space-4);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
 }
 
 /* Navigation animations */
@@ -137,26 +187,27 @@ ion-content {
 .content-container {
   max-width: 768px;
   margin: 0 auto;
-  padding: 16px;
+  padding: var(--space-6) var(--space-4);
 }
 
 /* Section headers */
 .section-title {
-  font-size: 18px;
+  font-size: var(--font-lg);
   font-weight: 600;
   color: var(--app-text-primary);
-  margin: 24px 16px 16px;
+  margin: var(--space-6) 0 var(--space-4) 0;
+  line-height: var(--leading-snug);
 }
 
 /* List items */
 ion-item {
   --background: var(--app-surface);
   --border-color: var(--app-border);
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --inner-padding-end: 16px;
-  border-radius: 12px;
-  margin-bottom: 8px;
+  --padding-start: var(--space-4);
+  --padding-end: var(--space-4);
+  --padding-top: var(--space-3);
+  --padding-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
 }
 
 /* Input fields */
@@ -176,14 +227,14 @@ ion-input, ion-select {
   --border-radius: 12px;
   --padding-start: 0;
   --padding-end: 0;
-  margin-bottom: 16px;
+  margin-bottom: var(--space-4);
 }
 
 .custom-select-item ion-label {
   color: var(--app-text-primary);
   font-weight: 500;
-  font-size: 14px;
-  margin-bottom: 8px;
+  font-size: var(--font-sm);
+  margin-bottom: var(--space-2);
 }
 
 .custom-select-item ion-select {
@@ -192,7 +243,8 @@ ion-input, ion-select {
   background: var(--app-background);
   border: 1px solid var(--app-border);
   border-radius: 12px;
-  padding: 12px 16px;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-base);
   width: 100%;
   max-width: 100%;
 }
@@ -272,9 +324,8 @@ ion-action-sheet.custom-select::part(button) {
 .generator-header {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 24px;
-  padding: 4px;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
 .generator-icon {
@@ -298,23 +349,22 @@ ion-action-sheet.custom-select::part(button) {
 }
 
 .generator-title h2 {
-  font-size: 20px;
+  font-size: var(--font-xl);
   font-weight: 600;
-  color: var(--app-text-primary);
-  margin: 0 0 4px 0;
-  line-height: 1.2;
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-1) 0;
 }
 
 .generator-title p {
-  font-size: 14px;
+  font-size: var(--font-sm);
   color: var(--app-text-secondary);
+  line-height: var(--leading-snug);
   margin: 0;
-  line-height: 1.4;
 }
 
 /* Card content spacing */
 ion-card-content {
-  padding: 20px !important;
+  padding: var(--space-4) !important;
 }
 
 /* Ensure proper spacing between sections */
@@ -366,7 +416,8 @@ ion-content {
 
 /* Card styles for consistent spacing */
 ion-card {
-  margin: 16px 0;
+  margin: 0 var(--space-4) var(--space-4) var(--space-4);
+  padding: var(--space-2);
   border-radius: 16px;
   background: var(--app-surface);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -375,19 +426,232 @@ ion-card {
 
 /* Section titles */
 .section-title {
-  font-size: 18px;
+  font-size: var(--font-lg);
   font-weight: 600;
   color: var(--app-text-primary);
-  margin: 24px 0 16px 0;
+  margin: var(--space-6) 0 var(--space-4) 0;
+  line-height: var(--leading-snug);
 }
 
 /* List items */
 ion-item {
   --background: var(--app-surface);
   --border-color: var(--app-border);
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --inner-padding-end: 16px;
+  --padding-start: var(--space-4);
+  --padding-end: var(--space-4);
+  --padding-top: var(--space-3);
+  --padding-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+/* Text Content */
+p {
+  font-size: var(--font-base);
+  line-height: var(--leading-normal);
+  color: var(--app-text-primary);
+  margin: 0 0 var(--space-4) 0;
+}
+
+/* Button Text */
+ion-button {
+  font-size: var(--font-base);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  height: 44px;
+}
+
+/* Chips */
+ion-chip {
+  font-size: var(--font-sm);
+  height: 28px;
+  padding: 0 var(--space-3);
+}
+
+/* Helper Text */
+.helper-text {
+  font-size: var(--font-sm);
+  color: var(--app-text-secondary);
+  margin: var(--space-2) 0 0 0;
+  line-height: var(--leading-snug);
+}
+
+/* Status Text */
+.status-text {
+  font-size: var(--font-xs);
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* Modern animations */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Modern Header Styles */
+.modern-header {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow-sm);
+}
+
+.app-header {
+  padding: 12px 16px;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--app-gradient);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--app-text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.app-subtitle {
+  font-size: 12px;
+  color: var(--app-text-secondary);
+  margin: 0;
+}
+
+/* Content Layout and Animations */
+.content-container {
+  animation: fadeSlideUp 0.3s ease-out;
+}
+
+.page-title {
+  animation: slideInRight 0.3s ease-out;
+}
+
+ion-card {
+  animation: scaleIn 0.3s ease-out;
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+ion-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Form Elements */
+ion-input, ion-select {
+  background: var(--app-background);
+  border: 1px solid var(--app-border);
   border-radius: 12px;
-  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+ion-input:focus, ion-select:focus {
+  border-color: var(--app-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Buttons */
+ion-button {
+  --background: var(--app-gradient);
+  --box-shadow: var(--shadow-sm);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+ion-button:hover {
+  --box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Icon colors on colored backgrounds */
+.generator-icon ion-icon {
+  font-size: 24px;
+  color: white;
+}
+
+/* Action icons sizing */
+.action-icons ion-button {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  height: 36px;
+}
+
+.action-icons ion-icon {
+  font-size: 18px;
+  color: var(--app-text-secondary);
+}
+
+.action-icons ion-button:hover ion-icon {
+  color: var(--app-primary);
+}
+
+/* Action icons in generated idea */
+.idea-card .action-icons ion-button {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  height: 36px;
+  --color: white;
+  --background: var(--app-gradient);
+  --border-radius: 8px;
+}
+
+.idea-card .action-icons ion-icon {
+  font-size: 18px;
+  color: white;
+}
+
+.idea-card .action-icons ion-button:hover {
+  --background: var(--app-gradient);
+  opacity: 0.9;
 }
